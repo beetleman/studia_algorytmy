@@ -1,0 +1,200 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <utime.h>
+#include <time.h>
+#include <time.h>
+#include <math.h>
+#include "algorytmy.h"
+
+int *Tablica(int n) {
+    int i,*p=(int*)malloc(sizeof(int)*n);
+    if (p!=NULL) for (i=0;i<n;i++) p[i]=0;
+    return p;
+}
+
+
+int **Macierz(int w,int k) {
+    int i,j, **p=(int**)malloc(sizeof(int*)*w);
+    if (p==0) return 0;
+
+    for (i=0;i<w;i++) {
+        p[i]=Tablica(k);
+        if (p[i]==NULL) break;
+    }
+
+    if (i<w) { 
+        for (j=0;j<i;j++) free(p[j]);
+        free(p);
+        return 0;
+    }
+
+    for (i=0;i<w;i++)
+        for (j=0;j<k;j++) p[i][j]=0;
+
+    return p;
+}
+
+
+void UsunMacierz(int **p,int w) {
+    int i;
+    for (i=0;i<w;i++) free(p[i]);
+    free(p); 
+}
+
+
+int __seed = 0;
+void losuj(int t[], int n, int p) {
+    if(__seed){
+        srand(time(0));
+        __seed = 1;
+    }
+    int i;
+    for (i=0;i<n;i++) t[i]=rand()%p;
+}
+
+
+void drukujT(int t[], int p, int k) {
+    int i;
+    for (i=p;i<k;i++) printf("%d ",t[i]);
+}
+
+
+void kopiujT(int t1[],int t2[],int n) {
+    int i;
+    for (i=0;i<n;i++) t1[i]=t2[i];
+}
+
+
+void odwrocT(int t[],int n) {
+    int i,x;
+    for (i=0;i<n/2;i++) {x=t[i];t[i]=t[n-i-1];t[n-i-1]=x;}
+}
+
+
+int* czytaj_z_pliku(const char * nazwa,int *ile) {
+    int i,n,x,*a;
+    FILE* f;
+    if ((f=fopen(nazwa,"rt"))==0) return 0;
+    n=0; 
+    while (fscanf(f,"%d",&x)==1) n++;
+    fseek(f,0,0); 
+
+    if (*ile > 0 && *ile < n) n=*ile;
+
+    a=Tablica(n);
+    *ile=n;
+    for (i=0;i<n;i++) if (fscanf(f,"%d",&x)==1) a[i]=x;
+    *ile=n;
+    fclose(f);
+    return a;
+}
+
+
+void zapisz_do_pliku(const char * nazwa,int a[], int n) {
+    int i;
+    FILE* f;
+    if ((f=fopen(nazwa,"wt"))==0) return;
+    for (i=0;i<n;i++)fprintf(f,"%d\n",a[i]);
+    fclose(f);
+}
+
+
+int szukaj_binarne(int t[], int s, int p, int k)
+{
+    int l = k - p;
+    int sr = p + l/2;
+
+    if(p == k){
+        if (t[p] == s)
+            return p;
+        else
+            return -1;
+    }
+
+    if(t[sr] < s)
+        return szukaj_binarne(t, s, sr, k);
+    else if (t[sr] < s)
+        return szukaj_binarne(t, s, p, sr);
+    else
+        return sr;
+}
+
+
+float potega(float x, float p)
+{
+    int i;
+    float w = 1;
+    for (i = 0; i < p; i++) {
+        w *= x;
+    }
+    return w;
+}
+
+
+float sum_wielomianu_algorytm_hornera(int tab[], int start, int end, float x)
+{
+    int i;
+    float w = tab[end];
+
+    for (i = start; i < end -1; i++) {
+        w *= x + tab[i];
+    }
+
+    return w;
+}
+
+
+float sum_wielomianu(int tab[], int start, int end, float x)
+{
+    int i;
+    float w = 0;
+
+    for (i = start; i < end; i++) {
+        w += tab[i] * potega(x, 2);
+    }
+
+    return w;
+}
+
+/* tab: tablica 1d; start: poczatek tablicy(zwykle 0); end: koniec tablicy */
+void sortuj_wstawianie( int tab[], int start, int end)
+{
+    /*
+      http://pl.wikipedia.org/wiki/Sortowanie_przez_wstawianie
+     */
+    int i ,j, tmp;
+    for (i = start; i < end; i++) {
+        tmp = tab[i];
+        /* 
+           tutaj cofiemy sie, bo uznajemy ze np w tablicy 10 elementowej
+           tablica skladajaca sie tylko z pierwszego elementu jest posortowana
+           wiec kolejne elementy wstawiamy gdzes w posortowanej tabeli od 0 do i
+           tak by pasowalo, np jak mamay [1, 3], tab[i] == 2 to wstawimy je miedzu 1 a 3.
+           ale nalerzy poamietac ze to tylko wycinek tabeli. cala moze wygladac:
+           [1, 3, 2, 5, 0], jak cos zamienimy. bez ryzunkow cierzkot o wyjasnic:(
+        */
+        for (j = i - 1; j >= 0 && tab[ j ] > tmp; j--) {
+            tab[j + 1] = tab[j];
+        }
+        tab[j +1] = tmp;
+    }
+}
+
+/* tab: tablica 1d; start: poczatek tablicy(zwykle 0); end: koniec tablicy */
+void sortuj_wybieranie( int tab[], int start, int end)
+{
+    /*
+      http://pl.wikipedia.org/wiki/Sortowanie_przez_wybieranie
+     */
+    int i, j, m, tmp;
+    for (i = start; i < end; i++) {
+        for (j = i, m = i; j < end; j++) {
+            if (tab[j] < tab[m]) {
+                m = j;
+            }
+        }
+        tmp = tab[i];
+        tab[i] = tab[m];
+        tab[m] = tmp;
+    }
+}
