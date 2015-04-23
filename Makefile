@@ -4,13 +4,16 @@ LIBS = -lm # tutaj można dodawać biblioteki
 all: main
 
 clean:
-	rm -fr algorytmy.o main
+	rm -fr timer_lib.o algorytmy.o main
 
 algorytmy.o: 
 	$(CC) $(CFLAGS) algorytmy.c -o algorytmy.o -c $(LIBS)
 
-main: algorytmy.o
-	$(CC) $(CFLAGS) algorytmy.o main.c -o main $(LIBS) 
+timer_lib.o: 
+	$(CC) $(CFLAGS) timer_lib.c -o timer_lib.o -c $(LIBS)
+
+main: algorytmy.o timer_lib.o
+	$(CC) $(CFLAGS) algorytmy.o timer_lib.o main.c -o main $(LIBS) 
 
 test: clean main
 	./main
