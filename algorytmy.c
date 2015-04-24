@@ -58,6 +58,14 @@ void drukujT(int t[], int p, int k) {
     for (i=p;i<k;i++) printf("%d ",t[i]);
 }
 
+void drukujM(int **t, int p, int k, int N) {
+    int j;
+    for (j=0; j<N; j++){
+        drukujT(t[j], p, k);
+        if(j + 1 < N)
+            printf("\n");
+    }
+}
 
 void kopiujT(int t1[],int t2[],int n) {
     int i;
@@ -131,6 +139,21 @@ float potega(float x, float p)
 }
 
 
+int* mnorzenie_m_w(int **mat, int *wek, int w, int k)
+{
+    int i, j;
+    int * m_w = Tablica(w);
+
+    for (i = 0; i < w; i++) {
+        m_w[i] = 0;
+        for (j = 0; j < k; j++) {
+            m_w[i] += wek[j] * mat[i][j];
+        }
+    }
+
+    return m_w;
+}
+
 float sum_wielomianu_algorytm_hornera(int tab[], int start, int end, float x)
 {
     int i;
@@ -197,4 +220,45 @@ void sortuj_wybieranie( int tab[], int start, int end)
         tab[i] = tab[m];
         tab[m] = tmp;
     }
+}
+
+
+void scal (int *tab, int start, int sr, int end)
+{
+    int i = start, j = sr, k = 0;
+    int * tmp = Tablica(end - start);
+
+    while (i < sr && j < end) {
+        if(tab[i] < tab[j]){
+            tmp[k] = tab[i];
+            i++;
+        }
+        else {
+            tmp[k] = tab[j];
+            j++;
+        }
+        k++;
+    }
+    for(;i < sr; i++,k++){
+        tmp[k] = tab[i];
+    }
+    for(;j < end; j++,k++){
+        tmp[k] = tab[j];
+    }
+    for (i = 0; i < k; i++) {
+        tab[start+i] = tmp[i];
+    }
+    free(tmp);
+}
+
+
+void sortuj_scalanie (int tab[], int start, int end) {
+    int n = end - start;
+    if (n < 2)
+        return;
+    /* srodek tablicy */
+    int sr = start + n/2;
+    sortuj_scalanie(tab, start, sr);
+    sortuj_scalanie(tab, sr, end);
+    scal(tab, start, sr, end);
 }
