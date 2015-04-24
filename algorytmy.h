@@ -16,6 +16,8 @@ void drukujM(int **t, int p, int k, int N);
 
 void kopiujT(int t1[],int t2[],int n);
 
+int porownajT(int t1[], int t2[], int p, int k);
+
 void odwrocT(int t[],int n);
 
 int* czytaj_z_pliku(const char *nazwa, int *ile);

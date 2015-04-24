@@ -107,6 +107,17 @@ void zapisz_do_pliku(const char * nazwa,int a[], int n) {
 }
 
 
+int porownajT(int t1[], int t2[], int p, int k)
+{
+    int i;
+    for (i = p; i < k; i++) {
+        if(t1[i] != t2[i])
+            return 0;
+    }
+    return 1;
+}
+
+
 int szukaj_binarne(int t[], int s, int p, int k)
 {
     int l = k - p;
