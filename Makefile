@@ -4,7 +4,7 @@ LIBS = -lm # tutaj można dodawać biblioteki
 all: main
 
 clean:
-	rm -fr timer_lib.o algorytmy.o main
+	rm -fr timer_lib.o algorytmy.o main sort_contest
 
 algorytmy.o: 
 	$(CC) $(CFLAGS) algorytmy.c -o algorytmy.o -c $(LIBS)
@@ -15,5 +15,11 @@ timer_lib.o:
 main: algorytmy.o timer_lib.o
 	$(CC) $(CFLAGS) algorytmy.o timer_lib.o main.c -o main $(LIBS) 
 
+sort_contest: algorytmy.o timer_lib.o
+	$(CC) $(CFLAGS) algorytmy.o timer_lib.o sort_contest.c -o sort_contest $(LIBS) 
+
 test: clean main
 	./main
+
+run_sort_contest: clean sort_contest
+	./sort_contest
