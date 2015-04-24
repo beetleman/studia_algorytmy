@@ -4,7 +4,7 @@ LIBS = -lm # tutaj można dodawać biblioteki
 all: main
 
 clean:
-	rm -fr timer_lib.o algorytmy.o main sort_contest
+	rm -fr timer_lib.o algorytmy.o main sort_contest plot.data
 
 algorytmy.o: 
 	$(CC) $(CFLAGS) algorytmy.c -o algorytmy.o -c $(LIBS)
@@ -22,4 +22,5 @@ test: clean main
 	./main
 
 run_sort_contest: clean sort_contest
-	./sort_contest
+	./sort_contest > plot.data
+	gnuplot plot.gp

@@ -7,7 +7,7 @@
 
 #define FROM   1000
 #define TO   100000
-#define STEP   5000
+#define STEP   2000
 #define MAX_RANDOM 100
 
 int fight(int size);
