@@ -279,29 +279,46 @@ void sortuj_scalanie (int tab[], int start, int end)
 
 /* qsort */
 
-int podzial (int tab[], int start, int end)
+int podzial (int tab[], int start, int end, int rand_piwot)
 {
-    int i, j, x;
+    int i, j, tmp, piwot;
     j= start - 1;
 
+    if(rand_piwot)
+        piwot = start + rand() % (end - start);
+    else
+        piwot = end-1;
+
     for (i = start; i < end; i++) {
-        if(tab[i] <= tab[end-1]){
+        if(tab[i] <= tab[piwot]){
             j++;
-            x = tab[i];
+            tmp = tab[i];
             tab[i] = tab[j];
-            tab[j] = x;
+            tab[j] = tmp;
         }
     }
     return j;
 }
 
 
-void sortuj_szybkie (int tab[], int start, int end)
+void _sortuj_szybkie (int tab[], int start, int end, int rand_piwot)
 {
     if(start >= end)
         return;
-    int sr = podzial(tab, start, end);
+    int sr = podzial(tab, start, end, rand_piwot);
 
     sortuj_szybkie(tab, start, sr);
-    sortuj_szybkie(tab, sr+1, end);
+    sortuj_szybkie(tab, sr + 1, end);
+}
+
+
+void sortuj_szybkie (int tab[], int start, int end)
+{
+    _sortuj_szybkie (tab, start, end, 0);
+}
+
+
+void sortuj_szybkie_rand_piwot (int tab[], int start, int end)
+{
+    _sortuj_szybkie (tab, start, end, 1);
 }

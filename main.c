@@ -66,6 +66,11 @@ int main()
     drukujT(tab_tmp, 0, N_RANDOM);
     printf("\n");
 
+    printf("\nsortowanie szybkie z losowym piwotem: \n");
+    kopiujT(tab_tmp, tab_r, N_RANDOM);
+    sortuj_szybkie_rand_piwot(tab_tmp, 0, N_RANDOM);
+    drukujT(tab_tmp, 0, N_RANDOM);
+    printf("\n");
 
     return (EXIT_SUCCESS);
 }
