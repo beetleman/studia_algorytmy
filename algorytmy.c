@@ -233,6 +233,8 @@ void sortuj_wybieranie( int tab[], int start, int end)
     }
 }
 
+/* merge sort */
+
 
 void scal (int *tab, int start, int sr, int end)
 {
@@ -263,7 +265,8 @@ void scal (int *tab, int start, int sr, int end)
 }
 
 
-void sortuj_scalanie (int tab[], int start, int end) {
+void sortuj_scalanie (int tab[], int start, int end)
+{
     int n = end - start;
     if (n < 2)
         return;
@@ -272,4 +275,33 @@ void sortuj_scalanie (int tab[], int start, int end) {
     sortuj_scalanie(tab, start, sr);
     sortuj_scalanie(tab, sr, end);
     scal(tab, start, sr, end);
+}
+
+/* qsort */
+
+int podzial (int tab[], int start, int end)
+{
+    int i, j, x;
+    j= start - 1;
+
+    for (i = start; i < end; i++) {
+        if(tab[i] <= tab[end-1]){
+            j++;
+            x = tab[i];
+            tab[i] = tab[j];
+            tab[j] = x;
+        }
+    }
+    return j;
+}
+
+
+void sortuj_szybkie (int tab[], int start, int end)
+{
+    if(start >= end)
+        return;
+    int sr = podzial(tab, start, end);
+
+    sortuj_szybkie(tab, start, sr);
+    sortuj_szybkie(tab, sr+1, end);
 }

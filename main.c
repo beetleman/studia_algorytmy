@@ -40,11 +40,13 @@ int main()
     printf("\n\tSortowanie.\nTablica do posortowania: \n");
     losuj(tab_r, N_RANDOM, 50);
     drukujT(tab_r, 0, N_RANDOM);
+    printf("\n");
 
     printf("\nsortowanie przez wstawianie: \n");
     kopiujT(tab_tmp, tab_r, N_RANDOM);
     sortuj_wstawianie(tab_tmp, 0, N_RANDOM);
     drukujT(tab_tmp, 0, N_RANDOM);
+    printf("\n");
 
     printf("\nsortowanie przez wybieranie: \n");
     kopiujT(tab_tmp, tab_r, N_RANDOM);
@@ -55,6 +57,12 @@ int main()
     printf("\nsortowanie przez scalanie: \n");
     kopiujT(tab_tmp, tab_r, N_RANDOM);
     sortuj_scalanie(tab_tmp, 0, N_RANDOM);
+    drukujT(tab_tmp, 0, N_RANDOM);
+    printf("\n");
+
+    printf("\nsortowanie szybkie: \n");
+    kopiujT(tab_tmp, tab_r, N_RANDOM);
+    sortuj_szybkie(tab_tmp, 0, N_RANDOM);
     drukujT(tab_tmp, 0, N_RANDOM);
     printf("\n");
 
