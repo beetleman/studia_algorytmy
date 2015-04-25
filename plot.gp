@@ -7,8 +7,8 @@ unset label
 set xtic auto
 set ytic auto
 set title "Algorytmy sortowania"
-set xlabel "Czas wykonania [s]"
-set ylabel "Liczba elementow w tablicy"
+set xlabel "Liczba elementow w tablicy"
+set ylabel "Czas wykonania [s]"
 
 plot "plot.data" using 1:2 title 'przez wstawianie' with linespoints, \
      "plot.data" using 1:3 title 'przez wybieranie' with linespoints, \

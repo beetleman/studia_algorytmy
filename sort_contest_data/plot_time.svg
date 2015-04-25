@@ -86,10 +86,10 @@
 		<text> 100000</text>
 	</g>
 	<path stroke='black'  d='M63.6,54.1 L63.6,422.4 L575.0,422.4 L575.0,54.1 L63.6,54.1 Z  '/>	<g transform="translate(17.6,238.3) rotate(270)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Liczba elementow w tablicy</text>
+		<text>Czas wykonania [s]</text>
 	</g>
 	<g transform="translate(319.3,471.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Czas wykonania [s]</text>
+		<text>Liczba elementow w tablicy</text>
 	</g>
 	<g transform="translate(319.3,31.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
 		<text>Algorytmy sortowania</text>
