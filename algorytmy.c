@@ -383,7 +383,6 @@ void drukuj_liste(struct LISTA * lista)
 
 }
 
-
 struct ELEMENT *wstaw_element (struct ELEMENT * el, struct ELEMENT * new_el)
 {
     struct ELEMENT * tmp;
