@@ -329,3 +329,43 @@ void sortuj_szybkie_rand_piwot (int tab[], int start, int end)
     srand(time(0));
     _sortuj_szybkie (tab, start, end, 1);
 }
+
+/* LISTA JEDNOKIERUKOWA
+
+   U mnie wszystkie cos zwracaja dziekitemu moge ponizsze funkcje
+   ladnie laczyc.
+*/
+
+/* wstawia element 'n' za 'c' i nie przerywa lancucha jesli 'c'
+   jest gdzes w srodku listy
+ */
+struct ELEMENT *wstaw_element (struct ELEMENT * el, struct ELEMENT * new_el)
+{
+    struct ELEMENT * tmp;
+    tmp = el->next;
+    el->next = new_el;
+    new_el->next = tmp;
+    return new_el;
+}
+
+struct ELEMENT *nowy_element(void)
+{
+    struct ELEMENT * el;
+    el = (struct ELEMENT *) malloc(sizeof(struct ELEMENT));
+    el->next = NULL;
+    return el;
+}
+
+struct ELEMENT *wytnij_nastepny(struct ELEMENT * el)
+{
+    struct ELEMENT * tmp;
+    tmp = el->next;
+    if(tmp->next != NULL)
+        el->next = tmp->next;
+    return tmp;
+}
+
+struct ELEMENT *wstaw_nowy_element(struct ELEMENT * el)
+{
+    return wstaw_element(el, nowy_element());
+}
