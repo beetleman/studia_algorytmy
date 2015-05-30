@@ -8,15 +8,16 @@
 int main()
 {
     int i;
-    struct ELEMENT * head;
-    struct ELEMENT * last;
-    head = nowy_element();
-    last = head;
+    struct LISTA *lista = nowa_lista();
+
 
     for (i = 0; i < N; i++) {
-        last = wstaw_nowy_element(last);
-        last->x = i;
-        last->y = i;
+        printf("1\n");
+        dodaj_do_konca_listy(lista, nowy_element());
+        lista->end->x = i;
+        lista->end->y = i;
+        printf("start.x = %d\n", lista->start->x);
+        printf("end.x = %d\n", lista->end->y);
     }
 
     return (EXIT_SUCCESS);

@@ -339,6 +339,37 @@ void sortuj_szybkie_rand_piwot (int tab[], int start, int end)
 /* wstawia element 'n' za 'c' i nie przerywa lancucha jesli 'c'
    jest gdzes w srodku listy
  */
+
+struct LISTA *nowa_lista(void)
+{
+    struct LISTA * lista;
+    lista = (struct LISTA *) malloc(sizeof(struct LISTA));
+    lista->start = NULL;
+    lista->end = NULL;
+    return lista;
+}
+
+void dodaj_do_konca_listy(struct LISTA * lista, struct ELEMENT * el)
+{
+    if(lista->end == NULL)
+        lista->end = el;
+    else
+        lista->end = wstaw_element(lista->end, el);
+    if(lista->start == NULL)
+        lista->start = lista->end;
+}
+
+void dodaj_do_poczatka_listy(struct LISTA * lista, struct ELEMENT * el)
+{
+    if(lista->start == NULL)
+        lista->start = nowy_element();
+    else
+        lista->start = wstaw_element(lista->start, el);
+    if(lista->end == NULL)
+        lista->end  = lista->start;
+}
+
+
 struct ELEMENT *wstaw_element (struct ELEMENT * el, struct ELEMENT * new_el)
 {
     struct ELEMENT * tmp;
