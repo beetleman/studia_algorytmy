@@ -195,7 +195,7 @@ void sortuj_wstawianie( int tab[], int start, int end)
 {
     /*
       http://pl.wikipedia.org/wiki/Sortowanie_przez_wstawianie
-     */
+    */
     int i ,j, tmp;
     for (i = start; i < end; i++) {
         tmp = tab[i];
@@ -219,7 +219,7 @@ void sortuj_wybieranie( int tab[], int start, int end)
 {
     /*
       http://pl.wikipedia.org/wiki/Sortowanie_przez_wybieranie
-     */
+    */
     int i, j, m, tmp;
     for (i = start; i < end; i++) {
         for (j = i, m = i; j < end; j++) {
@@ -282,12 +282,16 @@ void sortuj_scalanie (int tab[], int start, int end)
 int podzial (int tab[], int start, int end, int rand_piwot)
 {
     int i, j, tmp, piwot;
-    j= start - 1;
 
-    if(rand_piwot)
-        piwot = start + rand() % (end - start);
-    else
-        piwot = end-1;
+    j= start - 1;
+    piwot = end - 1;
+
+    if(rand_piwot){
+        i = start + rand() % (end - start);
+        tmp = tab[i];
+        tab[i] = tab[piwot];
+        tab[piwot] = tmp;
+    }
 
     for (i = start; i < end; i++) {
         if(tab[i] <= tab[piwot]){
@@ -297,6 +301,7 @@ int podzial (int tab[], int start, int end, int rand_piwot)
             tab[j] = tmp;
         }
     }
+
     return j;
 }
 
@@ -307,8 +312,8 @@ void _sortuj_szybkie (int tab[], int start, int end, int rand_piwot)
         return;
     int sr = podzial(tab, start, end, rand_piwot);
 
-    sortuj_szybkie(tab, start, sr);
-    sortuj_szybkie(tab, sr + 1, end);
+    _sortuj_szybkie(tab, start, sr, rand_piwot);
+    _sortuj_szybkie(tab, sr + 1, end, rand_piwot);
 }
 
 
@@ -320,5 +325,7 @@ void sortuj_szybkie (int tab[], int start, int end)
 
 void sortuj_szybkie_rand_piwot (int tab[], int start, int end)
 {
+    // inicjuje losowosc
+    srand(time(0));
     _sortuj_szybkie (tab, start, end, 1);
 }
