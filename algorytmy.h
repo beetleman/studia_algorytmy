@@ -39,4 +39,26 @@ void sortuj_scalanie(int tab[], int start, int end);
 void sortuj_szybkie (int tab[], int start, int end);
 void sortuj_szybkie_rand_piwot (int tab[], int start, int end);
 
+/* lista */
+
+struct element
+{
+    int x;
+    int y;
+
+    struct element * next;
+};
+
+/* drzewo */
+
+struct node
+{
+    int x;
+    int y;
+
+    struct node * root;
+    struct node * left;
+    struct node * right;
+};
+
 #endif
