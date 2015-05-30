@@ -41,24 +41,24 @@ void sortuj_szybkie_rand_piwot (int tab[], int start, int end);
 
 /* lista */
 
-struct element
+struct ELEMENT
 {
     int x;
     int y;
 
-    struct element * next;
+    struct ELEMENT * next;
 };
 
 /* drzewo */
 
-struct node
+struct NODE
 {
     int x;
     int y;
 
-    struct node * root;
-    struct node * left;
-    struct node * right;
+    struct NODE * root;
+    struct NODE * left;
+    struct NODE * right;
 };
 
 #endif
