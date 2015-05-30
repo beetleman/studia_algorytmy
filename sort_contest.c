@@ -38,10 +38,6 @@ int * check_sort(void (*sortuj)(int [], int, int),
     printf("%ld, ", stop_clock_timer());
 
     if(tab_ref != NULL && !porownajT(tab_tmp, tab_ref, 0, size)){
-        printf("powinno byc: ");
-        drukujT(tab_tmp, 0, size);
-        printf("\njest: ");
-        drukujT(tab_ref, 0, size);
         return NULL;
     }
 
@@ -49,13 +45,10 @@ int * check_sort(void (*sortuj)(int [], int, int),
 }
 
 
-int fight(int size){
-    int *tab = Tablica(size);
+int strike(int tab[], int size){
     int *tab_ref = Tablica(size);
-    losuj(tab, size, MAX_RANDOM);
 
-    printf("%d, ", size);
-
+    /* tablica z losowymi danymi */
     tab_ref = check_sort(&sortuj_wstawianie, tab, NULL, size);
 
     if(!(check_sort(&sortuj_wybieranie, tab, tab_ref, size) &&
@@ -64,9 +57,35 @@ int fight(int size){
          check_sort(&sortuj_szybkie_rand_piwot, tab, tab_ref, size))
         )
         return 0;
+    return 1;
+}
+
+
+int fight(int size){
+    int *tab = Tablica(size);
+    int i;
+    losuj(tab, size, MAX_RANDOM);
+
+    printf("%d, ", size);
+
+    /* tablica z losowymi danymi */
+    if(!strike(tab, size))
+        return 1;
+
+    /* tablica uporzadkowana */
+    for (i = 0; i < size; i++) {
+        tab[0] = i;
+    }
+    if(!strike(tab, size))
+        return 1;
+
+    /* tablica odrwortnie uporzadkowana */
+    for (i = 0; i < size; i++) {
+        tab[0] = size - i;
+    }
+    if(!strike(tab, size))
+        return 1;
 
     printf("\n");
-    free(tab_ref);
-    free(tab);
     return 1;
 }
