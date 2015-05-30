@@ -1,4 +1,4 @@
-CFLAGS = -Wall -ansi # tutaj można dodawać inne flagi kompilatora
+CFLAGS = -Wall -ansi -std=c99 # tutaj można dodawać inne flagi kompilatora
 LIBS = -lm # tutaj można dodawać biblioteki
 
 all: main
