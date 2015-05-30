@@ -396,6 +396,7 @@ struct ELEMENT *nowy_element(void)
 {
     struct ELEMENT * el;
     el = (struct ELEMENT *) malloc(sizeof(struct ELEMENT));
+    el->dane = (struct DANE *) malloc(sizeof(struct DANE));
     el->next = NULL;
     return el;
 }
