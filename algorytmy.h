@@ -59,6 +59,7 @@ struct LISTA *nowa_lista(void);
 
 void dodaj_do_konca_listy(struct LISTA * lista, struct ELEMENT * el);
 void dodaj_do_poczatka_listy(struct LISTA * lista, struct ELEMENT * el);
+void drukuj_liste(struct LISTA * lista);
 struct ELEMENT *wstaw_element (struct ELEMENT * el, struct ELEMENT * new_el);
 struct ELEMENT *nowy_element(void);
 struct ELEMENT *wytnij_nastepny(struct ELEMENT * el);

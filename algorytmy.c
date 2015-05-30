@@ -361,12 +361,26 @@ void dodaj_do_konca_listy(struct LISTA * lista, struct ELEMENT * el)
 
 void dodaj_do_poczatka_listy(struct LISTA * lista, struct ELEMENT * el)
 {
-    if(lista->start == NULL)
+    if(lista->start == NULL){
         lista->start = nowy_element();
-    else
-        lista->start = wstaw_element(lista->start, el);
+    }
+    else {
+        el->next = lista->start;
+        lista->start = el;
+    }
     if(lista->end == NULL)
         lista->end  = lista->start;
+}
+
+void drukuj_liste(struct LISTA * lista)
+{
+    struct ELEMENT *element = lista->start;
+
+    while(element != NULL){
+        printf("x = %d, y = %d\n", element->x, element->y);
+        element = element->next;
+    }
+
 }
 
 

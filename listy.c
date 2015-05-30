@@ -12,13 +12,18 @@ int main()
 
 
     for (i = 0; i < N; i++) {
-        printf("1\n");
         dodaj_do_konca_listy(lista, nowy_element());
         lista->end->x = i;
         lista->end->y = i;
-        printf("start.x = %d\n", lista->start->x);
-        printf("end.x = %d\n", lista->end->y);
     }
+
+    for (i = 1; i < N; i++) {
+        dodaj_do_poczatka_listy(lista, nowy_element());
+        lista->start->x = i * -1;
+        lista->start->y = i * -1;
+    }
+
+    drukuj_liste(lista);
 
     return (EXIT_SUCCESS);
 }
