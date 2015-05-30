@@ -40,12 +40,16 @@ void sortuj_szybkie (int tab[], int start, int end);
 void sortuj_szybkie_rand_piwot (int tab[], int start, int end);
 
 /* lista */
+#define DANE_SIZE 100
+
+struct DANE {
+    char s[DANE_SIZE];
+};
 
 struct ELEMENT
 {
-    int x;
-    int y;
-
+    int n;
+    struct DANE * dane;
     struct ELEMENT * next;
 };
 

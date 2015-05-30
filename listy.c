@@ -13,14 +13,12 @@ int main()
 
     for (i = 0; i < N; i++) {
         dodaj_do_konca_listy(lista, nowy_element());
-        lista->end->x = i;
-        lista->end->y = i;
+        lista->end->n = i;
     }
 
     for (i = 1; i < N; i++) {
         dodaj_do_poczatka_listy(lista, nowy_element());
-        lista->start->x = i * -1;
-        lista->start->y = i * -1;
+        lista->start->n = i * -1;
     }
 
     drukuj_liste(lista);

@@ -377,7 +377,7 @@ void drukuj_liste(struct LISTA * lista)
     struct ELEMENT *element = lista->start;
 
     while(element != NULL){
-        printf("x = %d, y = %d\n", element->x, element->y);
+        printf("n = %d \n", element->n);
         element = element->next;
     }
 
