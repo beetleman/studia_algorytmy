@@ -20,7 +20,10 @@ sort_contest: algorytmy.o timer_lib.o
 
 test: clean main
 	./main
+	make clean
 
 run_sort_contest: clean sort_contest
 	./sort_contest > plot.data
 	gnuplot plot.gp
+test_sort_contest: clean sort_contest
+	./sort_contest
