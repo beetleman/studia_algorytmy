@@ -49,6 +49,11 @@ struct ELEMENT
     struct ELEMENT * next;
 };
 
+struct ELEMENT *wstaw_element (struct ELEMENT * el, struct ELEMENT * new_el);
+struct ELEMENT *nowy_element(void);
+struct ELEMENT *wytnij_nastepny(struct ELEMENT * el);
+struct ELEMENT *wstaw_nowy_element(struct ELEMENT * el);
+
 /* drzewo */
 
 struct NODE
@@ -61,9 +66,5 @@ struct NODE
     struct NODE * right;
 };
 
-struct ELEMENT *wstaw_element (struct ELEMENT * el, struct ELEMENT * new_el);
-struct ELEMENT *nowy_element(void);
-struct ELEMENT *wytnij_nastepny(struct ELEMENT * el);
-struct ELEMENT *wstaw_nowy_element(struct ELEMENT * el);
 
 #endif
