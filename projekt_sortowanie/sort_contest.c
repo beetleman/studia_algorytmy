@@ -12,9 +12,9 @@ int * check_sort(void (*sortuj)(int [], int, int),
     int *tab_tmp = Tablica(size);
     kopiujT(tab_tmp, tab, size);
 
-    start_clock_timer();
+    start_timer();
     (*sortuj)(tab_tmp, 0, size);
-    printf("%ld, ", stop_clock_timer());
+    printf("%f, ", stop_timer());
 
     if(tab_ref != NULL && !porownajT(tab_tmp, tab_ref, 0, size)){
         return NULL;
