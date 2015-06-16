@@ -22,5 +22,6 @@ run_sort_contest: clean sort_contest
 	./main > plot.data
 	gnuplot plot.gp
 
-test_sort_contest: clean sort_contest
+test: clean main
 	./main
+
