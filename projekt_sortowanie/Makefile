@@ -18,10 +18,9 @@ sort_contest.o:
 main: sort_contest.o timer_lib.o algorytmy.o
 	$(CC) $(CFLAGS) sort_contest.o timer_lib.o algorytmy.o main.c -o main $(LIBS)
 
-run_sort_contest: clean sort_contest
+run_sort_contest: clean main
 	./main > plot.data
 	gnuplot plot.gp
 
 test: clean main
 	./main
-
