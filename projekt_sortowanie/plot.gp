@@ -1,4 +1,3 @@
-set terminal svg enhanced background rgb 'white'
 
 set autoscale
 unset log
@@ -14,15 +13,24 @@ set datafile separator ','
 p_dir = 'plots/'
 d_dir = 'data/'
 
-p_ext = '.svg'
 d_ext = '.csv'
+
+p_terminals = 'png svg'
 
 random_csv = d_dir.'random'.d_ext
 sorted_csv = d_dir.'sorted'.d_ext
 reverse_sorted_csv = d_dir.'reverse_sorted'.d_ext
 
 
+do for [i=1:words(p_terminals)] {
+
+p_terminal = word(p_terminals, i)
+p_ext = '.'.p_terminal
+set terminal p_terminal enhanced background rgb 'white'
+
 set output p_dir.'random'.p_ext
+
+
 set title 'Dane losowe'
 
 plot random_csv using 1:2 with points pt 1 lc rgb "red", \
@@ -114,3 +122,5 @@ set title 'Sortowanie szybkie z losowym pivotem'
 plot reverse_sorted_csv using 1:6 title 'odwrotnie posortowane' with points pt 1 lc rgb "red", \
      sorted_csv using 1:6 title 'posortowana' with points pt 1 lc rgb "black", \
      random_csv using 1:6 title 'losowe' with points pt 1 lc rgb "green", \
+
+}
