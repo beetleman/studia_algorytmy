@@ -21,6 +21,3 @@ main: sort_contest.o timer_lib.o algorytmy.o
 run_sort_contest: clean main
 	./main
 	gnuplot plot.gp
-
-test: clean main
-	./main
