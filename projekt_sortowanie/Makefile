@@ -4,7 +4,7 @@ LIBS = -lm # tutaj można dodawać biblioteki
 all: main
 
 clean:
-	rm -fr timer_lib.o algorytmy.o sort_contest.o main  *.csv
+	rm -fr timer_lib.o algorytmy.o sort_contest.o main
 
 algorytmy.o:
 	$(CC) $(CFLAGS) algorytmy.c -o algorytmy.o -c $(LIBS)
