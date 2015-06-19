@@ -31,14 +31,6 @@ int szukaj_binarne(int tab[], int s, int p, int k);
 float sum_wielomianu_algorytm_hornera(int tab[], int start, int end, float x);
 float sum_wielomianu(int tab[], int start, int end, float x);
 
-
-void sortuj_wstawianie( int tab[], int start, int end);
-void sortuj_wybieranie( int tab[], int start, int end);
-void sortuj_scalanie(int tab[], int start, int end);
-
-void sortuj_szybkie (int tab[], int start, int end);
-void sortuj_szybkie_rand_piwot (int tab[], int start, int end);
-
 /* lista */
 #define DANE_SIZE 1000
 

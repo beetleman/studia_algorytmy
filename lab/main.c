@@ -43,7 +43,7 @@ int main()
 
     drukuj_liste(lista);
 
-    read_and_print("./listy.c");
+    read_and_print("./main.c");
 
     return (EXIT_SUCCESS);
 }
