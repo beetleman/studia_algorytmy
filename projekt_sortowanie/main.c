@@ -8,9 +8,9 @@ int main()
 {
 
     int status;
-    FILE * fp_random = fopen("random.csv", "w");
-    FILE * fp_sorted = fopen("sorted.csv", "w");
-    FILE * fp_reverse_sorted = fopen("reverse_sorted.csv", "w");
+    FILE * fp_random = fopen("data/random.csv", "w");
+    FILE * fp_sorted = fopen("data/sorted.csv", "w");
+    FILE * fp_reverse_sorted = fopen("data/reverse_sorted.csv", "w");
     if(fp_random == NULL || fp_sorted == NULL || fp_reverse_sorted == NULL) {
         fprintf(stderr, "Nie moge otworzyc pliku!");
     }
