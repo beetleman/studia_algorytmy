@@ -5,7 +5,8 @@
 #include "algorytmy.h"
 
 
-int *Tablica(int n) {
+int *Tablica(int n)
+{
     int i;
     int *p = (int*) malloc(sizeof(int)*n);
     if (p!=NULL) {
@@ -18,7 +19,8 @@ int *Tablica(int n) {
 
 
 int __seed = 0;
-void losuj(int t[], int n, int p) {
+void losuj(int t[], int n, int p)
+{
     if(__seed){
         srand(time(0));
         __seed = 1;
@@ -29,14 +31,16 @@ void losuj(int t[], int n, int p) {
 }
 
 
-void kopiujT(int t1[],int t2[],int n) {
+void kopiujT(int t1[],int t2[],int n)
+{
     int i;
     for (i=0;i<n;i++)
         t1[i]=t2[i];
 }
 
 
-void odwrocT(int t[],int n) {
+void odwrocT(int t[],int n)
+{
     int i,x;
     for (i=0; i < n/2; i++) {
         x=t[i];
