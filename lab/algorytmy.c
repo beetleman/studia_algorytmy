@@ -6,14 +6,16 @@
 #include <math.h>
 #include "algorytmy.h"
 
-int *Tablica(int n) {
+int *Tablica(int n)
+{
     int i,*p=(int*)malloc(sizeof(int)*n);
     if (p!=NULL) for (i=0;i<n;i++) p[i]=0;
     return p;
 }
 
 
-int **Macierz(int w,int k) {
+int **Macierz(int w,int k)
+{
     int i,j, **p=(int**)malloc(sizeof(int*)*w);
     if (p==0) return 0;
 
@@ -35,7 +37,8 @@ int **Macierz(int w,int k) {
 }
 
 
-void UsunMacierz(int **p,int w) {
+void UsunMacierz(int **p,int w)
+{
     int i;
     for (i=0;i<w;i++) free(p[i]);
     free(p); 
@@ -43,7 +46,8 @@ void UsunMacierz(int **p,int w) {
 
 
 int __seed = 0;
-void losuj(int t[], int n, int p) {
+void losuj(int t[], int n, int p)
+{
     if(__seed){
         srand(time(0));
         __seed = 1;
@@ -53,12 +57,15 @@ void losuj(int t[], int n, int p) {
 }
 
 
-void drukujT(int t[], int p, int k) {
+void drukujT(int t[], int p, int k)
+{
     int i;
     for (i=p;i<k;i++) printf("%d ",t[i]);
 }
 
-void drukujM(int **t, int p, int k, int N) {
+
+void drukujM(int **t, int p, int k, int N)
+{
     int j;
     for (j=0; j<N; j++){
         drukujT(t[j], p, k);
@@ -67,19 +74,24 @@ void drukujM(int **t, int p, int k, int N) {
     }
 }
 
-void kopiujT(int t1[],int t2[],int n) {
+
+void kopiujT(int t1[],int t2[],int n)
+
+{
     int i;
     for (i=0;i<n;i++) t1[i]=t2[i];
 }
 
 
-void odwrocT(int t[],int n) {
+void odwrocT(int t[],int n)
+{
     int i,x;
     for (i=0;i<n/2;i++) {x=t[i];t[i]=t[n-i-1];t[n-i-1]=x;}
 }
 
 
-int* czytaj_z_pliku(const char * nazwa,int *ile) {
+int* czytaj_z_pliku(const char * nazwa,int *ile)
+{
     int i,n,x,*a;
     FILE* f;
     if ((f=fopen(nazwa,"rt"))==0) return 0;
@@ -98,7 +110,8 @@ int* czytaj_z_pliku(const char * nazwa,int *ile) {
 }
 
 
-void zapisz_do_pliku(const char * nazwa,int a[], int n) {
+void zapisz_do_pliku(const char * nazwa,int a[], int n)
+{
     int i;
     FILE* f;
     if ((f=fopen(nazwa,"wt"))==0) return;
