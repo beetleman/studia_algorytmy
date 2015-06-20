@@ -316,3 +316,13 @@ void wstaw_do_drzewa(struct NODE ** root, struct NODE * leaf)
         root = &leaf;
     }
 }
+
+
+void drukuj_drzewo(struct NODE * root)
+{
+    if (root)
+        return;
+    drukuj_drzewo(root->left);
+    printf("%d, ", root->x);
+    drukuj_drzewo(root->right);
+}
