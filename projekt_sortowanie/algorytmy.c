@@ -221,7 +221,7 @@ void sortuj_zliczanie (int tab[], int start, int end, int max)
     }
 
     for(i = end - 1; i >= 0; --i){
-        tab[--tab_tmp[tab_copy[i]]] =tab_copy[i];
+        tab[--tab_tmp[tab_copy[i]]] = tab_copy[i];
     }
 }
 
