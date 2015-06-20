@@ -275,3 +275,44 @@ struct ELEMENT *wstaw_nowy_element(struct ELEMENT * el)
 {
     return wstaw_element(el, nowy_element());
 }
+
+
+/* dzewo */
+struct NODE *nowy_wezel()
+{
+    struct NODE *node = (struct NODE *) malloc(sizeof(struct NODE));
+
+    node->left = NULL;
+    node->right = NULL;
+    node->root = NULL;
+
+    return node;
+}
+
+
+void wstaw_do_drzewa(struct NODE * root, struct NODE * leaf)
+{
+    struct NODE *tmp;
+    struct NODE *last;
+
+    last = tmp = root;
+
+    while (tmp != NULL) {
+        last = tmp;
+        if(tmp->x > leaf->x)
+            tmp = tmp->left;
+        else
+            tmp = tmp->right;
+    }
+
+    if (last != NULL) {
+        if(last->x > leaf->x)
+            last->left = leaf;
+        else
+            last->right = leaf;
+        leaf->root = last;
+    }
+    else {
+        root = leaf;
+    }
+}
