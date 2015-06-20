@@ -278,7 +278,7 @@ struct ELEMENT *wstaw_nowy_element(struct ELEMENT * el)
 
 
 /* dzewo */
-struct NODE *nowy_wezel()
+struct NODE *nowy_wezel(void)
 {
     struct NODE *node = (struct NODE *) malloc(sizeof(struct NODE));
 

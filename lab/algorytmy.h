@@ -66,12 +66,13 @@ struct ELEMENT *wstaw_nowy_element(struct ELEMENT * el);
 struct NODE
 {
     int x;
-    int y;
 
     struct NODE * root;
     struct NODE * left;
     struct NODE * right;
 };
 
+void wstaw_do_drzewa(struct NODE ** root, struct NODE * leaf);
+struct NODE *nowy_wezel(void);
 
 #endif
