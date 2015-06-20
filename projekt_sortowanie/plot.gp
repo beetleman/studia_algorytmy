@@ -115,8 +115,7 @@ plot reverse_sorted_csv using 1:5 title 'odwrotnie posortowane' with points pt 1
      random_csv using 1:5 title 'losowe' with points pt 1 lc rgb "green", \
 
 
-
-set output p_dir.'qsort_random_randomized'.p_ext
+set output p_dir.'qsort_randomized'.p_ext
 set title 'Sortowanie szybkie z losowym pivotem'
 
 plot reverse_sorted_csv using 1:6 title 'odwrotnie posortowane' with points pt 1 lc rgb "red", \
