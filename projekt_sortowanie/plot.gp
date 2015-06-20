@@ -1,4 +1,3 @@
-
 set autoscale
 unset log
 unset label
