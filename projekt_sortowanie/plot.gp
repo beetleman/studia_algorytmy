@@ -9,9 +9,7 @@ set ylabel 'Czas wykonania [s]'
 set key left top
 set datafile separator ','
 
-p_dir = 'plots/'
 d_dir = 'data/'
-
 d_ext = '.csv'
 
 p_terminals = 'png svg'
@@ -25,11 +23,12 @@ do for [i=1:words(p_terminals)] {
 
 p_terminal = word(p_terminals, i)
 p_ext = '.'.p_terminal
+p_dir = 'plots/'.p_terminal.'/'
+
 set terminal p_terminal enhanced background rgb 'white'
 
+
 set output p_dir.'random'.p_ext
-
-
 set title 'Dane losowe'
 
 plot random_csv using 1:2 with points pt 1 lc rgb "red", \
