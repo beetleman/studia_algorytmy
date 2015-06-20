@@ -74,5 +74,6 @@ struct NODE
 
 void wstaw_do_drzewa(struct NODE ** root, struct NODE * leaf);
 struct NODE *nowy_wezel(void);
+void drukuj_drzewo(struct NODE * root);
 
 #endif
