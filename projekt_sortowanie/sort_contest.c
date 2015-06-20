@@ -40,7 +40,8 @@ int strike(int tab[], int size, FILE * fp)
     if(!(check_sort(&sortuj_wybieranie, tab, tab_ref, size, 0, fp) &&
          check_sort(&sortuj_scalanie, tab, tab_ref, size, 0, fp) &&
          check_sort(&sortuj_szybkie, tab, tab_ref, size, 0, fp) &&
-         check_sort(&sortuj_szybkie_rand_piwot, tab, tab_ref, size, 1, fp))
+         check_sort(&sortuj_szybkie_rand_piwot, tab, tab_ref, size, 0, fp) &&
+         check_sort(&sortuj_zliczanie_for_contest, tab, tab_ref, size, 1, fp))
         )
         return 0;
     return 1;

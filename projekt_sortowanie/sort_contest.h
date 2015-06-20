@@ -7,7 +7,7 @@
 #define TO    10000
 #define STEP    100
 
-#define TABLE_HEADER "n, wstawiamy, wybieranie, scalanie, szybkie, szybkie losowe \n"
+#define TABLE_HEADER "n, wstawiamy, wybieranie, scalanie, szybkie, szybkie losowe, zliczanie\n"
 
 int start_contest(FILE * fp_random, FILE * fp_sorted, FILE * fp_reverse_sorted);
 int fight(int size, FILE * fp_random, FILE * fp_sorted, FILE * fp_reverse_sorted);

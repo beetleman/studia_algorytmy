@@ -198,3 +198,31 @@ void sortuj_szybkie_rand_piwot (int tab[], int start, int end)
     srand(time(0));
     _sortuj_szybkie (tab, start, end, 1);
 }
+
+
+void sortuj_zliczanie (int tab[], int start, int end, int max)
+{
+    int i;
+
+    int *tab_copy = Tablica(end);
+    int *tab_tmp = Tablica(end);
+    kopiujT(tab_copy, tab, end);
+
+    for(i = start; i < end; ++i){
+        ++tab_tmp[tab_copy[i]];
+    }
+
+    for(i = start + 1; i < max; ++i){
+        tab_tmp[i] += tab_tmp[i-1];
+    }
+
+    for(i = end - 1; i >= 0; --i){
+        tab[--tab_tmp[tab_copy[i]]] =tab_copy[i];
+    }
+}
+
+
+void sortuj_zliczanie_for_contest (int tab[], int start, int end)
+{
+    sortuj_zliczanie (tab, start, end, end);
+}

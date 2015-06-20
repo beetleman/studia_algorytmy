@@ -14,5 +14,7 @@ void sortuj_scalanie(int tab[], int start, int end);
 
 void sortuj_szybkie (int tab[], int start, int end);
 void sortuj_szybkie_rand_piwot (int tab[], int start, int end);
+void sortuj_zliczanie_for_contest (int tab[], int start, int end);
+void sortuj_zliczanie (int tab[], int start, int end, int max);
 
 #endif
