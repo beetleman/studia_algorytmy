@@ -290,12 +290,12 @@ struct NODE *nowy_wezel()
 }
 
 
-void wstaw_do_drzewa(struct NODE * root, struct NODE * leaf)
+void wstaw_do_drzewa(struct NODE ** root, struct NODE * leaf)
 {
     struct NODE *tmp;
     struct NODE *last;
 
-    last = tmp = root;
+    last = tmp = *root;
 
     while (tmp != NULL) {
         last = tmp;
@@ -313,6 +313,6 @@ void wstaw_do_drzewa(struct NODE * root, struct NODE * leaf)
         leaf->root = last;
     }
     else {
-        root = leaf;
+        root = &leaf;
     }
 }
