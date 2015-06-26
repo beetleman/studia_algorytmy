@@ -19,12 +19,18 @@ int *Tablica(int n)
 
 
 int __seed = 0;
-void losuj(int t[], int n, int p)
+void initonce_srand(void)
 {
     if(__seed){
         srand(time(0));
         __seed = 1;
     }
+}
+
+
+void losuj(int t[], int n, int p)
+{
+    initonce_srand();
     int i;
     for (i=0;i<n;i++)
         t[i]=rand()%p;
@@ -199,7 +205,7 @@ void sortuj_szybkie (int tab[], int start, int end)
 void sortuj_szybkie_rand_piwot (int tab[], int start, int end)
 {
     // inicjuje losowosc
-    srand(time(0));
+    initonce_srand();
     _sortuj_szybkie (tab, start, end, 1);
 }
 

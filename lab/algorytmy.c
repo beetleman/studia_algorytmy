@@ -46,12 +46,18 @@ void UsunMacierz(int **p,int w)
 
 
 int __seed = 0;
-void losuj(int t[], int n, int p)
+void initonce_srand(void)
 {
     if(__seed){
         srand(time(0));
         __seed = 1;
     }
+}
+
+
+void losuj(int t[], int n, int p)
+{
+    initonce_srand();
     int i;
     for (i=0;i<n;i++) t[i]=rand()%p;
 }
