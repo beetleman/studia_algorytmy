@@ -29,6 +29,8 @@ struct LISTA * read_and_print(char *file_name)
 int main()
 {
     int i;
+
+    /* listy */
     struct LISTA *lista = nowa_lista();
 
     for (i = 0; i < N; i++) {
@@ -44,6 +46,8 @@ int main()
     drukuj_liste(lista);
 
     read_and_print("./main.c");
+
+    /* drzewa */
 
     return (EXIT_SUCCESS);
 }
