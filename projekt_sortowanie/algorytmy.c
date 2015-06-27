@@ -21,7 +21,7 @@ int *Tablica(int n)
 int __seed = 0;
 void initonce_srand(void)
 {
-    if(__seed){
+    if(!__seed){
         srand(time(0));
         __seed = 1;
     }
